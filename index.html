@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coins</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="introduction">
+        <h1>Guess the Number</h1>
+        <p>I've guessed a number from 1 to 100, you need to guess it</p>
+      </div>
+      <p class="win-message" >Guessed in <span>0</span> moves</p>
+      <div class="buttons-container">
+        <input id="input" class="input" type="number" id="throw" />
+        <button id="start">Guess</button>
+      </div> 
+      <button  id="try-again-message">Start over</button>
+      <div id="tips">-</div>
+      <div class="counter-container">
+        <p>Games played: <span id="counts">0</span></p>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
