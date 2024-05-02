@@ -18,39 +18,14 @@ inputField.oninput = function () {
   inputValue = inputField.value;
 };
 
-start.addEventListener("click", () => {
-  tryCount++;
-  parseInt(inputValue);
-
-  if ((inputValue.length > 2) & (inputValue !== 100)) {
-    tips.innerHTML =
-      '<h2 style="color:#e62d2d;">Only numbers from 1 to 100 are accepted</h2>';
-    inputField.value = "";
-  } else if (inputValue.length === 0) {
-    tips.innerHTML = '<h2 style="color:#e62d2d;">Enter a valid number</h2>';
-  } else {
-    if (inputValue === hiddenNumber) {
-      guessedRight();
-    } else if (inputValue > hiddenNumber) {
-      if (inputValue - hiddenNumber > 10) {
-        tips.innerHTML =
-          "Tip: The entered number is much greater than the guessed number";
-      } else {
-        tips.innerHTML =
-          "Tip: The entered number is greater than the guessed number";
-      }
-    } else if (inputValue < hiddenNumber) {
-      if (hiddenNumber - inputValue > 10) {
-        tips.innerHTML =
-          "Tip: The entered number is much less than the guessed number";
-      } else {
-        tips.innerHTML =
-          "Tip: The entered number is less than the guessed number";
-      }
-    } else {
-      alert("Unknown error");
-    }
+inputField.addEventListener("keypress", (e) =>  {
+  if (e.key === "Enter") {
+    compareNumbers();
   }
+});
+
+start.addEventListener("click", () => {
+  compareNumbers();
 });
 
 function beginn() {}
@@ -61,7 +36,7 @@ function guessedRight() {
   winMessage.classList.add("block");
   winMessage.firstElementChild.innerText = tryCount;
   inputField.style.background = "#00b3573d";
-  tryAgainMessage.classList.add("block"); 
+  tryAgainMessage.classList.add("block");
   tryAgainMessage.disabled = false;
   tips.style.opacity = "0";
   start.disabled = true;
@@ -81,3 +56,34 @@ tryAgainMessage.addEventListener("click", () => {
   start.disabled = false;
   start.innerHTML = "Guess";
 });
+
+function compareNumbers() {
+  tryCount++;
+  parseInt(inputValue);
+
+  if ((inputValue.length > 2) & (inputValue !== 100)) {
+    tips.innerHTML =
+      '<h2 style="color:#e62d2d;">Only numbers from 1 to 100 are accepted</h2>';
+    inputField.value = "";
+  } else if (inputValue.length === 0) {
+    tips.innerHTML = '<h2 style="color:#e62d2d;">Enter a valid number</h2>';
+  } else {
+    if (inputValue === hiddenNumber) {
+      guessedRight();
+    } else if (inputValue > hiddenNumber) {
+      if (inputValue - hiddenNumber > 10) {
+        tips.innerHTML = "Tip: The entered number is much greater";
+      } else {
+        tips.innerHTML = "Tip: The entered number is greater";
+      }
+    } else if (inputValue < hiddenNumber) {
+      if (hiddenNumber - inputValue > 10) {
+        tips.innerHTML = "Tip: The entered number is much less";
+      } else {
+        tips.innerHTML = "Tip: The entered number is less";
+      }
+    } else {
+      alert("Unknown error");
+    }
+  }
+}
