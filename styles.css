@@ -78,6 +78,12 @@ input::-webkit-inner-spin-button {
   cursor: default;
 }
 
+.main-container button:focus,
+.main-container .input:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
 .main-container .input {
   background: var(--input-bg);
   text-align: center;

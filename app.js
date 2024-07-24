@@ -1,89 +1,92 @@
 "use strict";
+
 const tips = document.querySelector("#tips");
-const start = document.querySelector("#start");
+const startButton = document.querySelector("#start");
 const counts = document.querySelector("#counts");
 const winMessage = document.querySelector(".win-message");
 const inputField = document.querySelector("#input");
-const tryAgainMessage = document.querySelector("#try-again-message");
+const tryAgainButton = document.querySelector("#try-again-message");
+
 let hiddenNumber = (Math.random() * 100).toFixed(0);
 let gameCount = 0;
 let tryCount = 0;
 let inputValue = "";
 
+// Initialize the input field when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   inputField.value = "";
 });
 
+// Update the input value when the user types
 inputField.oninput = function () {
   inputValue = inputField.value;
 };
 
-inputField.addEventListener("keypress", (e) =>  {
+// Handle Enter key press to submit the guess
+inputField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     compareNumbers();
   }
 });
 
-start.addEventListener("click", () => {
+// Handle click on the start button to submit the guess
+startButton.addEventListener("click", () => {
   compareNumbers();
 });
 
-function beginn() {}
-
+// Function to handle a correct guess
 function guessedRight() {
   gameCount++;
   counts.innerHTML = gameCount;
   winMessage.classList.add("block");
   winMessage.firstElementChild.innerText = tryCount;
   inputField.style.background = "#00b3573d";
-  tryAgainMessage.classList.add("block");
-  tryAgainMessage.disabled = false;
+  tryAgainButton.classList.add("block");
+  tryAgainButton.disabled = false;
   tips.style.opacity = "0";
-  start.disabled = true;
-  start.innerHTML = "Guessed";
+  startButton.disabled = true;
+  startButton.innerHTML = "Guessed";
 }
 
-tryAgainMessage.addEventListener("click", () => {
+// Handle click on the try again button to reset the game
+tryAgainButton.addEventListener("click", () => {
+  resetGame();
+});
+
+// Function to reset the game
+function resetGame() {
   tryCount = 0;
   hiddenNumber = (Math.random() * 100).toFixed(0);
   inputField.value = "";
   inputField.style.background = "#08687e3d";
   winMessage.classList.remove("block");
-  tryAgainMessage.classList.remove("block");
-  tryAgainMessage.disabled = true;
+  tryAgainButton.classList.remove("block");
+  tryAgainButton.disabled = true;
   tips.style.opacity = "1";
   tips.innerHTML = "-";
-  start.disabled = false;
-  start.innerHTML = "Guess";
-});
+  startButton.disabled = false;
+  startButton.innerHTML = "Guess";
+}
 
+// Function to compare the guessed number with the hidden number
 function compareNumbers() {
   tryCount++;
-  parseInt(inputValue);
+  const guessedNumber = parseInt(inputValue, 10);
 
-  if ((inputValue.length > 2) & (inputValue !== 100)) {
-    tips.innerHTML =
-      '<h2 style="color:#e62d2d;">Only numbers from 1 to 100 are accepted</h2>';
+  if (isNaN(guessedNumber) || guessedNumber < 1 || guessedNumber > 100) {
+    tips.innerHTML = '<h2 style="color:#e62d2d;">Only numbers from 1 to 100 are accepted</h2>';
     inputField.value = "";
-  } else if (inputValue.length === 0) {
-    tips.innerHTML = '<h2 style="color:#e62d2d;">Enter a valid number</h2>';
   } else {
-    if (inputValue === hiddenNumber) {
+    if (guessedNumber == hiddenNumber) {
       guessedRight();
-    } else if (inputValue > hiddenNumber) {
-      if (inputValue - hiddenNumber > 10) {
-        tips.innerHTML = "Tip: The entered number is much greater";
-      } else {
-        tips.innerHTML = "Tip: The entered number is greater";
-      }
-    } else if (inputValue < hiddenNumber) {
-      if (hiddenNumber - inputValue > 10) {
-        tips.innerHTML = "Tip: The entered number is much less";
-      } else {
-        tips.innerHTML = "Tip: The entered number is less";
-      }
+    } else if (guessedNumber > hiddenNumber) {
+      tips.innerHTML = guessedNumber - hiddenNumber > 10 
+        ? "Tip: The entered number is much greater" 
+        : "Tip: The entered number is greater";
     } else {
-      alert("Unknown error");
+      tips.innerHTML = hiddenNumber - guessedNumber > 10 
+        ? "Tip: The entered number is much less" 
+        : "Tip: The entered number is less";
     }
   }
 }

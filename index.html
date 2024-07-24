@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Guess the Number</title>
     <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="main-container">
-      <div class="introduction">
-        <h1>Guess the Number</h1>
-        <p>I've guessed a number from 1 to 100, you need to guess it</p>
-      </div>
-      <p class="win-message" >Guessed in <span>0</span> moves</p>
-      <div class="buttons-container">
-        <input id="input" class="input" type="number" id="throw" />
-        <button id="start">Guess</button>
-      </div> 
-      <button  id="try-again-message">Start over</button>
-      <div id="tips">-</div>
-      <div class="counter-container">
-        <p>Games played: <span id="counts">0</span></p>
-      </div>
+</head>
+<body>
+    <div class="main-container" role="main">
+        <div class="introduction">
+            <h1>Guess the Number</h1>
+            <p>I've guessed a number from 1 to 100, you need to guess it</p>
+        </div>
+        <p class="win-message" aria-live="polite">Guessed in <span>0</span> moves</p>
+        <div class="buttons-container">
+            <input id="input" class="input" type="number" aria-label="Enter your guess" />
+            <button id="start" aria-label="Start guessing">Guess</button>
+        </div>
+        <button id="try-again-message" aria-label="Try again">Start over</button>
+        <div id="tips" aria-live="polite">-</div>
+        <div class="counter-container">
+            <p>Games played: <span id="counts">0</span></p>
+        </div>
     </div>
     <script src="./app.js"></script>
-  </body>
+</body>
 </html>
