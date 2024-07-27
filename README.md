@@ -1,8 +1,8 @@
-# Guess the Number Game
+# GuessTheNumberGame
 
 ## Description
 
-Guess the Number Game is a fun and interactive game where players try to guess a hidden number between 1 and 100. The game provides hints to help players get closer to the correct number, tracks the number of attempts, and allows players to reset the game to try again.
+GuessTheNumberGame is a fun and interactive game where players try to guess a hidden number between 1 and 100. The game provides hints to help players get closer to the correct number, tracks the number of attempts, and allows players to reset the game to try again.
 
 ## Features
 
@@ -15,3 +15,17 @@ Guess the Number Game is a fun and interactive game where players try to guess a
 ## Demo
 
 You can play the game [here](https://anastacodes.github.io/GuessTheNumberGame/).
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+
+## Acknowledgments
+
+- Inspired by classic number guessing games.
+
+## Contact
+
+If you have any questions or suggestions, please feel free to reach out.
