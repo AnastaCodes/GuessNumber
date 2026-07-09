@@ -1,31 +1,22 @@
-# GuessTheNumberGame
+# Guess the Number
 
-## Description
+**A number-guessing game with graded hints — how few attempts do you need?**
 
-GuessTheNumberGame is a fun and interactive game where players try to guess a hidden number between 1 and 100. The game provides hints to help players get closer to the correct number, tracks the number of attempts, and allows players to reset the game to try again.
+![Guess the Number screenshot](docs/screenshot.jpg)
+
+**[Play it live →](https://anastacodes.github.io/GuessTheNumberGame/)**
 
 ## Features
 
-- Guess a number between 1 and 100.
-- Provides hints whether the guessed number is higher or lower than the hidden number.
-- Tracks the number of attempts.
-- Allows resetting the game to play again.
-- Simple and intuitive user interface.
+- Guess the hidden number between 1 and 100
+- Graded hints: "higher / lower" and "much higher / much lower" as you close in
+- Attempt counter and one-click restart
+- Keyboard support (type and hit Enter) with ARIA attributes for accessibility
+- Built with vanilla HTML, CSS and JavaScript — no dependencies
 
-## Demo
+## Run locally
 
-You can play the game [here](https://anastacodes.github.io/GuessTheNumberGame/).
-
-## Technologies Used
-
-- HTML
-- CSS
-- JavaScript
-
-## Acknowledgments
-
-- Inspired by classic number guessing games.
-
-## Contact
-
-If you have any questions or suggestions, please feel free to reach out.
+```bash
+git clone https://github.com/AnastaCodes/GuessTheNumberGame.git
+open GuessTheNumberGame/index.html
+```
