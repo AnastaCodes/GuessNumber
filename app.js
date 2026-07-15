@@ -7,7 +7,7 @@ const winMessage = document.querySelector(".win-message");
 const inputField = document.querySelector("#input");
 const tryAgainButton = document.querySelector("#try-again-message");
 
-let hiddenNumber = (Math.random() * 100).toFixed(0);
+let hiddenNumber = Math.floor(Math.random() * 100) + 1;
 let gameCount = 0;
 let tryCount = 0;
 let inputValue = "";
@@ -56,7 +56,7 @@ tryAgainButton.addEventListener("click", () => {
 // Function to reset the game
 function resetGame() {
   tryCount = 0;
-  hiddenNumber = (Math.random() * 100).toFixed(0);
+  hiddenNumber = Math.floor(Math.random() * 100) + 1;
   inputField.value = "";
   inputField.style.background = "#08687e3d";
   winMessage.classList.remove("block");
@@ -77,7 +77,7 @@ function compareNumbers() {
     tips.innerHTML = '<h2 style="color:#e62d2d;">Only numbers from 1 to 100 are accepted</h2>';
     inputField.value = "";
   } else {
-    if (guessedNumber == hiddenNumber) {
+    if (guessedNumber === hiddenNumber) {
       guessedRight();
     } else if (guessedNumber > hiddenNumber) {
       tips.innerHTML = guessedNumber - hiddenNumber > 10 
